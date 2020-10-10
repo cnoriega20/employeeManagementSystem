@@ -3,19 +3,12 @@
  */
 package com.springboot.rest.controllers;
 
-import java.util.List;
-
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.springboot.rest.entities.Employee;
 import com.springboot.rest.exceptions.EmployeeNotFoundException;
 import com.springboot.rest.repositories.EmployeeRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author cnoriega
@@ -67,7 +60,7 @@ public class EmployeeController {
 	  }
 
 	  @DeleteMapping("/employees/{id}")
-	  void deleteEmployee(@PathVariable Long id) {
+	  void deleteEmployee(@PathVariable Long id)  {
 		  employeeRepository.deleteById(id);
 	  }
 }
