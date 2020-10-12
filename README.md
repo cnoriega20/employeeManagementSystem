@@ -37,7 +37,7 @@ Spring.io complete Rest API project
       RawContentLength  : 12
 
 ```
-  # Test with Curl and Docker:
+  # Swagger:
     
       - Swagger Docs: http://localhost:8080/v2/api-docs
       
