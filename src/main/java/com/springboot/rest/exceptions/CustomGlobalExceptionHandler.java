@@ -44,6 +44,7 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
 		CustomErrorResponse customErrorResponse = CustomErrorResponse.builder()
 				.timestamp(LocalDateTime.now())
 				.status(HttpStatus.BAD_REQUEST.value())
+				.error(ex.getBindingResult().toString())
 				.build();
 		return new ResponseEntity(customErrorResponse, HttpStatus.BAD_REQUEST);
 	}

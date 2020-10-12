@@ -8,6 +8,7 @@ import com.springboot.rest.exceptions.EmployeeNotFoundException;
 import com.springboot.rest.repositories.EmployeeRepository;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ public class EmployeeController {
 	  }
 
 	  @PostMapping("/employees")
-	  public Employee getNewEmployee(@RequestBody Employee newEmployee) {
+	  public Employee getNewEmployee(@RequestBody  @Valid Employee newEmployee) {
 	    return employeeRepository.save(newEmployee);
 	  }
 
@@ -45,7 +46,7 @@ public class EmployeeController {
 	  }
 
 	  @PutMapping("/employees/{id}")
-	  public Employee updateEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
+	  public Employee updateEmployee(@RequestBody @Valid Employee newEmployee, @PathVariable Long id) {
 
 	    return employeeRepository.findById(id)
 	      .map(employee -> {
