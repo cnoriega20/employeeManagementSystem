@@ -37,4 +37,9 @@ Spring.io complete Rest API project
       RawContentLength  : 12
 
 ```
+  # Swagger:
+    
+      - Swagger Docs: http://localhost:8080/v2/api-docs
+      
+      - Swagger UI: http://localhost:8080/swagger-ui/
     
