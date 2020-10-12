@@ -1,5 +1,6 @@
 package com.springboot.rest.entities;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -9,11 +10,12 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
+@ApiModel(description = "Employee Entity object")
 public class Employee {
 
 	private @Id @GeneratedValue Long id;
 
-	@Size(min = 2, max = 200)
+	@Size(min = 2, max = 200, message="Name should be at least two characters")
 	private String name;
 
 	private String role;
