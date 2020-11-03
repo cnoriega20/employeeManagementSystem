@@ -46,4 +46,7 @@ Spring.io complete Rest API project
   - HAL Url: http://localhost:8080/explorer/index.html
   - Actuator: http://localhost:8080/explorer/index.html#uri=/actuator
   
+  # Bamboo Server:
+  http://localhost:8085/
+  
     
