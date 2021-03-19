@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<karate.version>0.9.6</karate.version>
 	</properties>
 
 	<dependencies>
@@ -82,47 +83,67 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-rest-hal-explorer</artifactId>
 		</dependency>
-		<dependency> 
-	      <groupId>com.amazonaws.serverless</groupId> 
-	      <artifactId>aws-serverless-java-container-spring</artifactId> 
-	      <version>1.1</version> 
-		</dependency>
-		<!--<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+		<!--Karate Dependencies -->
+		<dependency>
+			<groupId>com.intuit.karate</groupId>
+			<artifactId>karate-apache</artifactId>
+			<version>${karate.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
+			<groupId>com.intuit.karate</groupId>
+			<artifactId>karate-junit5</artifactId>
+			<version>${karate.version}</version>
 			<scope>test</scope>
-		</dependency>-->
+		</dependency>
+		<!--Karate Dependencies -->
 	</dependencies>
 
 	<build>
-		<plugins> 
-   <plugin> 
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-shade-plugin</artifactId>
-      <configuration> 
-        <createDependencyReducedPom>false</createDependencyReducedPom> 
-      </configuration> 
-      <executions> 
-        <execution> 
-          <phase>package</phase>
-          <goals> 
-            <goal>shade</goal> 
-          </goals> 
-          <configuration> 
-             <artifactSet> 
-                <excludes> 
-                   <exclude>org.apache.tomcat.embed:*</exclude>
-                </excludes> 
-             </artifactSet>
-          </configuration> 
-        </execution>
-      </executions> 
-   </plugin>
-</plugins>
+		<testResources>
+			<testResource>
+				<directory>src/test/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
+		<plugins>
+		   <plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-shade-plugin</artifactId>
+			  <configuration>
+				<createDependencyReducedPom>false</createDependencyReducedPom>
+			  </configuration>
+			  <executions>
+				<execution>
+				  <phase>package</phase>
+				  <goals>
+					<goal>shade</goal>
+				  </goals>
+				  <configuration>
+					 <artifactSet>
+						<excludes>
+						   <exclude>org.apache.tomcat.embed:*</exclude>
+						</excludes>
+					 </artifactSet>
+				  </configuration>
+				</execution>
+			  </executions>
+		   </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
+				<configuration>
+					<excludes>
+						<exclude>karate/**/*.java</exclude>
+					</excludes>
+					<includes>
+						<include>com/**/*.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
-
 </project>
