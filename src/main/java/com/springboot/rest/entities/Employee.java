@@ -1,16 +1,17 @@
 package com.springboot.rest.entities;
 
 import io.swagger.annotations.ApiModel;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.validation.constraints.Size;
 
 @Data
 @Entity
 @ApiModel(description = "Employee Entity object")
+@Builder
 public class Employee {
 
 	private @Id @GeneratedValue Long id;
