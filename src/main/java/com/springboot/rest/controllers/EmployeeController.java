@@ -6,9 +6,9 @@ package com.springboot.rest.controllers;
 import com.springboot.rest.entities.Employee;
 import com.springboot.rest.exceptions.EmployeeNotFoundException;
 import com.springboot.rest.repositories.EmployeeRepository;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -50,7 +50,9 @@ public class EmployeeController {
 
 	    return employeeRepository.findById(id)
 	      .map(employee -> {
-	        employee.setName(newEmployee.getName());
+	        employee.setFirstName(newEmployee.getFirstName());
+			employee.setLastName(newEmployee.getLastName());
+			employee.setEmail(newEmployee.getEmail());
 	        employee.setRole(newEmployee.getRole());
 	        return employeeRepository.save(employee);
 	      })
