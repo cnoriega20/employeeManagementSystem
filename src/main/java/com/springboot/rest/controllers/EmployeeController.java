@@ -6,7 +6,7 @@ package com.springboot.rest.controllers;
 import com.springboot.rest.entities.Employee;
 import com.springboot.rest.exceptions.EmployeeNotFoundException;
 import com.springboot.rest.repositories.EmployeeRepository;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
